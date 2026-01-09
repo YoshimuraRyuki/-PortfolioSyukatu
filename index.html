@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header style="
+        background-image: url('img/背景.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    ">
+    
+    <h1 style="
+        color: rgb(0, 0, 0);
+        margin: 0;
+        font-size: clamp(40px, 8vw, 80px);
+        font-weight: bold;
+    ">
+            吉村 竜希
+        </h1>
+    </header>
+
+    <main>
+        <div style="
+            width: 30%;
+            padding: 1rem;
+        ">
+        <h2>目次</h2>
+            <ul>
+                <li><a href="#自己紹介">自己紹介</a></li>
+                <li>
+                    <a href="#開発実績">開発実績</a>
+                    <ul>
+                        <li><a href="#1">作品1</a></li>
+                        <li><a href="#2">作品2</a></li>
+                    </ul>
+                </li>
+            </ul>     
+        </div>
+
+        <section id="自己紹介">
+            <h2>自己紹介</h2>
+            <p>ここに自己紹介文を記載します。得意な技術や経歴など。</p>
+        </section>
+
+        <section id="開発実績">
+            <h2>開発実績</h2>
+            <div class="grid">
+                <!-- 作品1 -->
+                <div id="1">
+                    <img src="project1.jpg" alt="作品1">
+                    <h3>作品タイトル1</h3>
+                    <p>使用技術：HTML / CSS / JavaScript</p>
+                </div>
+                <!-- 作品2 -->
+                <div id="2">
+                    <img src="project2.jpg" alt="作品2">
+                    <h3>作品タイトル2</h3>
+                    <p>使用技術：React / Next.js</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Your Name</p>
+    </footer>
+</body>
+
+</html>
