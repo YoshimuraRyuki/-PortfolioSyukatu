@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>吉村 竜希-ポートフォリオサイト</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -12,17 +13,17 @@
         background-image: url('img/背景.jpg');
         background-size: cover;
         background-position: center;
-        height: 300px;
+        height: 250px;
 
         display: flex;
         justify-content: center;
         align-items: center;
     ">
-    
-    <h1 style="
+
+        <h1 style="
         color: rgb(0, 0, 0);
         margin: 0;
-        font-size: clamp(40px, 8vw, 80px);
+        font-size: clamp(40px, 8vw, 70px);
         font-weight: bold;
     ">
             吉村 竜希
@@ -32,48 +33,223 @@
     <main>
         <div style="
             width: 30%;
-            padding: 1rem;
+            margin-left: 80px;
         ">
-        <h2>目次</h2>
+            <h2>目次</h2>
             <ul>
                 <li><a href="#自己紹介">自己紹介</a></li>
                 <li>
                     <a href="#開発実績">開発実績</a>
                     <ul>
-                        <li><a href="#1">作品1</a></li>
-                        <li><a href="#2">作品2</a></li>
+                        <li><a href="#1">くっつけ！じしゃ君(仮タイトル)</a></li>
+                        <li><a href="#2">スピードラン</a></li>
+                        <li><a href="#3">ギャラクシアン(再現)</a></li>
                     </ul>
                 </li>
-            </ul>     
+            </ul>
         </div>
 
-        <section id="自己紹介">
-            <h2>自己紹介</h2>
-            <p>ここに自己紹介文を記載します。得意な技術や経歴など。</p>
+        <section id="自己紹介" class="section-header">
+            <h2 class="section-title">自己紹介</h2>
         </section>
 
-        <section id="開発実績">
-            <h2>開発実績</h2>
-            <div class="grid">
-                <!-- 作品1 -->
-                <div id="1">
-                    <img src="project1.jpg" alt="作品1">
-                    <h3>作品タイトル1</h3>
-                    <p>使用技術：HTML / CSS / JavaScript</p>
-                </div>
-                <!-- 作品2 -->
-                <div id="2">
-                    <img src="project2.jpg" alt="作品2">
-                    <h3>作品タイトル2</h3>
-                    <p>使用技術：React / Next.js</p>
-                </div>
+        <!-- 自己紹介本文 -->
+        <section class="profile">
+            <img src="img/就活用証明写真.jpg" alt="プロフィール画像" class="profile-img">
+
+            <div class="profile-text">
+                <p>
+                    <strong>横浜デジタルアーツ専門学校 2年 ゲーム科</strong><br><br>
+                    <strong>吉村 竜希</strong><br>
+                </p>
+                <!-- プロフィール表 -->
+                <table class="profile-table">
+                    <tr>
+                        <th>生年月日</th>
+                        <td>2006年1月23日</td>
+                    </tr>
+                    <tr>
+                        <th>趣味</th>
+                        <td>ゲーム、動画編集</td>
+                    </tr>
+                    <tr>
+                        <th>資格</th>
+                        <td>CGクリエイター検定ベーシック・情報検定情報活用試験3級</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="開発実績" class="section-headerkai">
+            <h2 class="section-title">開発実績</h2>
+        </section>
+
+
+
+
+        <!-- 作品1 -->
+        <section id="1" class="section-header">
+            <h2 class="section-title">くっつけ！じしゃ君(仮タイトル)</h2>
+        </section>
+
+        <section class="profile-video work">
+            <div class="work-video-area">
+                <video class="work-video" controls>
+                    <source src="video/" type="video/mp4">
+                </video>
+
+                <a href="work1.html" class="work-detail-link">
+                    ▶ 詳細ページを見る
+                </a>
+            </div>
+            <div class="profile-text work-text">
+
+                <table class="work-table">
+                    <tr>
+                        <th class="empty"></th>
+                        <th class="header">内容</th>
+                    </tr>
+                    <tr>
+                        <th>プラットフォーム</th>
+                        <td>Windows PC</td>
+                    </tr>
+                    <tr>
+                        <th>言語</th>
+                        <td>C#</td>
+                    </tr>
+                    <tr>
+                        <th>開発環境</th>
+                        <td>Unity</td>
+                    </tr>
+                    <tr>
+                        <th>制作人数</th>
+                        <td>4人</td>
+                    </tr>
+                    <tr>
+                        <th>制作期間</th>
+                        <td>5ヶ月</td>
+                    </tr>
+                </table>
+
+
+                <p>
+                    <strong>概要：</strong>現在制作中の3Dアドベンチャーゲームです。磁石のくっつく能力を利用してギミックをクリアして先に進んでいくゲームです。
+                </p>
+                <p>
+                    <!-- <strong>アピールポイント：</strong> -->
+                </p>
+            </div>
+        </section>
+
+        <!-- 作品2 -->
+        <section id="2" class="section-header">
+            <h2 class="section-title">スピードラン</h2>
+        </section>
+
+        <section class="profile-video work">
+            <div class="work-video-area">
+                <video class="work-video" controls>
+                    <source src="video/個人製作スピードラン動画.mp4" type="video/mp4">
+                </video>
+
+                <a href="speedRun.html" class="work-detail-link">
+                    ▶ 詳細ページを見る
+                </a>
+            </div>
+
+            <div class="profile-text work-text">
+
+                <table class="work-table">
+                    <tr>
+                        <th class="empty"></th>
+                        <th class="header">内容</th>
+                    </tr>
+                    <tr>
+                        <th>プラットフォーム</th>
+                        <td>Android</td>
+                    </tr>
+                    <tr>
+                        <th>言語</th>
+                        <td>C#</td>
+                    </tr>
+                    <tr>
+                        <th>開発環境</th>
+                        <td>Unity</td>
+                    </tr>
+                    <tr>
+                        <th>制作人数</th>
+                        <td>1人</td>
+                    </tr>
+                    <tr>
+                        <th>制作期間</th>
+                        <td>1ヶ月</td>
+                    </tr>
+                </table>
+
+
+                <p>
+                    <strong>概要：</strong>スマホ向けに作成したゲームです。タップの仕方で2種類のジャンプを出すことができ、それを駆使して早くゴールを目指すスピードランゲーム。
+                </p>
+                <p>
+                    <strong>アピールポイント：</strong>先行入力処理を導入して、プレイヤーがストレスなくジャンプできるように作成しました。
+                </p>
+            </div>
+        </section>
+
+
+        <!-- 作品3 -->
+        <section id="3" class="section-header">
+            <h2 class="section-title">ギャラクシアン(再現)</h2>
+        </section>
+
+        <section class="profile-video work">
+            <div class="work-video-area">
+                <img src="img/ギャラクシアン.webp" alt="プロフィール画像" class="profile-img">
+            </div>
+
+            <div class="profile-text work-text">
+
+                <table class="work-table">
+                    <tr>
+                        <th class="empty"></th>
+                        <th class="header">内容</th>
+                    </tr>
+                    <tr>
+                        <th>プラットフォーム</th>
+                        <td>Windows PC</td>
+                    </tr>
+                    <tr>
+                        <th>言語</th>
+                        <td>C#</td>
+                    </tr>
+                    <tr>
+                        <th>開発環境</th>
+                        <td>Unity</td>
+                    </tr>
+                    <tr>
+                        <th>制作人数</th>
+                        <td>4人</td>
+                    </tr>
+                    <tr>
+                        <th>制作期間</th>
+                        <td>3ヶ月</td>
+                    </tr>
+                </table>
+
+
+                <p>
+                    <strong>概要：</strong>1年次に初めてゲーム制作をした際に制作したゲームです。2Dシューティングゲームです。
+                </p>
+                <p>
+                    <strong>アピールポイント：</strong>レッドエイリアンの追従処理、プレイヤーに向かう処理を作成しました。
+                </p>
             </div>
         </section>
     </main>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2026 Your Name</p>
-    </footer>
+    </footer> -->
 </body>
 
 </html>

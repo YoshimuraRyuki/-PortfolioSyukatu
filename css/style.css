@@ -1,0 +1,251 @@
+.section-title {
+    color: #000;
+    margin: 0;
+    font-size: clamp(20px, 4vw, 40px);
+    font-weight: bold;
+}
+
+.section-headerkai {
+    background-image: url('../img/背景.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-header {
+    background-image: url('../img/背景水色.png');
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    align-items: center;     /* 縦中央揃え */
+    gap: 30px;               /* 画像と文字の間隔 */
+    max-width: 900px;
+    margin: 40px auto 40px 120px;       /* 中央寄せ */
+    padding: 20px;
+}
+
+.profile-img {
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;     /* 角を少し丸く */
+}
+
+.profile-text {
+    margin-left: clamp(40px, 8vw, 120px);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.profile-table {
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;        /* ← 横幅を大きく */
+    font-size: 20px;         /* ← 文字を大きく */
+}
+
+.profile-table th,
+.profile-table td {
+    white-space: nowrap;   /* ← 勝手に改行しない */
+    line-height: 1.8;
+    border: 2px solid #cfd8e3;  /* ← 枠線も少し太く */
+    padding: 22px 32px;         /* ← 余白をかなり広げる */
+}
+
+.profile-table th {
+    background-color: #eaf4ff;
+    width: 25%;
+    font-weight: 700;
+}
+
+.profile-table td {
+    background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .profile-text {
+        margin-left: 0;
+        font-size: 16px;
+    }
+
+    .profile-table {
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    .profile-table th,
+    .profile-table td {
+        white-space: normal;   /* ← ここが最重要 */
+        padding: 12px 14px;    /* ← 余白を縮める */
+    }
+
+    .profile-table th {
+        width: 35%;           /* ← 項目名を少し広げる */
+    }
+}
+
+
+.work-video {
+    width: 100%;
+    max-width: 600px; 
+    border-radius: 12px;
+}
+
+.work-video-area {
+    display: flex;
+    flex-direction: column;   /* ← 縦並びにする（超重要） */
+    align-items: flex-start;  /* ← 左寄せ */
+}
+
+
+/* 動画用だけ上揃え */
+.profile-video {
+    align-items: flex-start;
+}
+.profile-video h3 {
+    margin-top: 0;
+}
+/* 動画用だけ上揃え */
+.profile-video {
+    align-items: flex-start;
+}
+
+/* 作品全体用 */
+.work {
+    display: flex;
+    align-items: flex-start;   /* ← 動画と文字を上揃え */
+    gap: 10px;                 /* 動画と文字の間隔 */
+    max-width: 100%;
+    margin: 40px auto 40px 80px;        
+    padding: 20px;
+}
+
+
+.work-text {
+     flex: 1;
+    margin-left: 0; 
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+
+
+
+
+.work-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 550px;     /* ← 900 → 750 */
+    margin: 20px 0;       /* ← 余白を少し減らす */
+    font-size: 15px;      /* ← 18 → 16 */
+}
+
+/* 枠線 */
+.work-table th,
+.work-table td {
+    border: 1.5px solid #000; /* ← 少し細く */
+    padding: 6px 12px;        /* ← 余白を縮める */
+}
+
+/* 左の項目名 */
+.work-table th {
+    width: 30%;
+    text-align: left;
+    font-weight: 600;     /* ← boldより少し軽く */
+    background-color: #fff;
+}
+
+/* 上の「内容」 */
+.work-table .header {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* 左上の空白セル */
+.work-table .empty {
+    background-color: #fff;
+    border-right: 1.5px solid #000;
+}
+
+/* 右側内容 */
+.work-table td {
+    width: 70%;
+}
+
+/* speedRun用 */
+.scripts-img {
+    width: 600px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;     /* 角を少し丸く */
+}
+
+/* 処理説明ブロック */
+.script-block {
+    display: flex;
+    align-items: flex-start; /* 上揃え */
+    gap: 20px;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* 大ジャンプ用 */
+.script-block.large {
+    max-width: 1200px; /* ← ここを広げる */
+}
+
+/* 画像 */
+.scripts-img {
+    width: 420px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* 文章 */
+.script-text {
+    flex: 1;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.script-text h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.script-images {
+    display: flex;
+    flex-direction: column; /* ← ここがポイント */
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .script-block {
+        flex-direction: column;
+    }
+
+    .scripts-img {
+        width: 100%;
+    }
+}
