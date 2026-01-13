@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>スピードラン詳細ページ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -29,7 +29,9 @@
             スピードラン詳細ページ
         </h1>
     </header>
-
+    <a href="index.html" class="work-detail-link" style="font-size: 24px;">
+        ▶ 吉村竜希ポートフォリオに戻る
+    </a>
     <!-- 処理①：先行入力処理 -->
     <section class="script-block">
         <img src="img/先行入力処理.png" alt="先行入力処理" class="scripts-img">
@@ -42,6 +44,24 @@
             </p>
             <p>
                 これにより、プレイヤーが操作しやすく、スピード感のあるプレイが可能になります。
+            </p>
+        </div>
+    </section>
+
+    <section class="script-block">
+        <video class="work-video" controls style="display: block; margin: -30 auto;">
+            <source src="video/先行入力動画.mp4" type="video/mp4">
+        </video>
+        <div class="script-text">
+            <h2>動画説明</h2>
+            <p>
+                デバック時に行ったためマウスのクリックを使用しています。
+            </p>
+            <p>
+                空中にいる時にタップするとジャンプを行う関数が一定時間有効になります。その時間内に地面に触れるとジャンプを行います。
+            </p>
+            <p>
+                先行入力によってジャンプしたらジャンプ可能というデバックが発動しています。
             </p>
         </div>
     </section>
@@ -61,6 +81,24 @@
             <p>
                 プレイヤーは状況に応じてジャンプを使い分ける必要があり、
                 ルート選択の幅が広がります。
+            </p>
+        </div>
+    </section>
+
+    <section class="script-block">
+        <video class="work-video" controls style="display: block; margin: -30 auto;">
+            <source src="video/大ジャンプ動画.mp4" type="video/mp4">
+        </video>
+        <div class="script-text">
+            <h2>動画説明</h2>
+            <p>
+                デバック時に行ったためマウスのクリックを使用しています。
+            </p>
+            <p>
+                最初にタップした位置から最後に指が離された位置を計算してそれが上方向ならスワイプしてると判断して大ジャンプの処理を実行させています。
+            </p>
+            <p>
+                これによりプレイヤーがもし横や下方向にスワイプした際は通常のジャンプになるようになっています。
             </p>
         </div>
     </section>
