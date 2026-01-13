@@ -76,32 +76,104 @@
 }
 
 @media (max-width: 768px) {
+
+    /* プロフィール（画像＋文字） */
     .profile {
         flex-direction: column;
+        align-items: center;
         margin: 20px auto;
         padding: 10px;
     }
 
-    .profile-text {
+    /* 作品（動画＋説明） */
+    .work {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    /* テキスト部分を中央寄せ */
+    .profile-text,
+    .work-text {
         margin-left: 0;
+        width: 100%;
         font-size: 16px;
     }
 
-    .profile-table {
+    /* 動画・画像を100%表示 */
+    .work-video,
+    .profile-img {
+        width: 100%;
         max-width: 100%;
-        font-size: 16px;
     }
 
-    .profile-table th,
-    .profile-table td {
-        white-space: normal;   /* ← ここが最重要 */
-        padding: 12px 14px;    /* ← 余白を縮める */
-    }
-
-    .profile-table th {
-        width: 35%;           /* ← 項目名を少し広げる */
+    /* 動画エリアも縦 */
+    .work-video-area {
+        align-items: center;
+        width: 100%;
     }
 }
+
+@media (max-width: 768px) {
+    main > div {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .profile-img,
+    .scripts-img,
+    .work-video {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .work-video-area {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .section-header,
+    .section-headerkai {
+        height: 70px;
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: clamp(18px, 5vw, 26px);
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .profile-table,
+    .work-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .script-block {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .script-text {
+        font-size: 16px;
+    }
+}
+
 
 
 .work-video {
@@ -250,5 +322,35 @@
 
     .scripts-img {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* 横スクロール完全防止 */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* 作品全体（右ズレの主犯） */
+    .work {
+        margin: 20px auto;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* テキスト側 */
+    .work-text {
+        margin-left: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* テーブルがはみ出さないように */
+    .work-table {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
