@@ -354,3 +354,33 @@
         box-sizing: border-box;
     }
 }
+
+.script-block1 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    max-width: 1000px;   /* 横幅制限 */
+    margin: 0 auto;      /* 中央配置 */
+}
+
+.script-item1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.scripts-img1 {
+    width: 420px;
+    height: auto;
+    border: 1px solid #ccc;
+    
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.script-item1 p {
+    flex: 1;
+    line-height: 1.6;
+     font-size: 17px;
+}

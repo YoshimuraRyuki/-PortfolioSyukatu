@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ミニクラッシュ・ロワイアル詳細ページ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header style="
+        background-image: url('img/背景.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    ">
+
+        <h1 style="
+        color: rgb(0, 0, 0);
+        margin: 0;
+        font-size: clamp(40px, 8vw, 70px);
+        font-weight: bold;
+    ">
+            ミニクラッシュ・ロワイアル詳細ページ
+        </h1>
+    </header>
+    <a href="index.html" class="work-detail-link" style="font-size: 24px;">
+        ▶ 吉村竜希ポートフォリオに戻る
+    </a>
+    <!-- 処理①：Unit処理 -->
+    <section class="script-block">
+        <video class="work-video" controls style="display: block; margin: -30 auto;">
+            <source src="video/Unit処理.mp4" type="video/mp4">
+        </video>
+
+        <div class="script-text">
+            <h2>Unit管理</h2>
+            <p>
+                UnitのHP・攻撃力・攻撃範囲・攻撃間隔・足の速さを非プログラマーや他のプログラマーがインスペクター上で簡単に変更をできるように
+                制作しました。
+            </p>
+            <p>
+                これにより、後からキャラクターを追加する際やゲームバランスの調整をする際に変更を加えやすくなっています。
+            </p>
+        </div>
+    </section>
+
+    <section class="script-block">
+        <video class="work-video" controls style="display: block; margin: -30 auto;">
+            <source src="video/Unit攻撃.mp4" type="video/mp4">
+        </video>
+
+        <div class="script-text">
+            <h2>Unit攻撃処理</h2>
+            <p>
+                ユニットの攻撃範囲に敵が入ったら移動を停止し、攻撃処理に移行します。
+            </p>
+            <p>
+                この時、ユニットのアニメーションイベントを利用して実行タイミングを制御しています。
+            </p>
+            <p>
+                攻撃モーション終了時に関数を呼び出すことで、見た目と内部処理の同期を行い、違和感のない挙動になるように実装しました。
+            </p>
+        </div>
+    </section>
+
+
+    <!-- 処理②：ユニット行動遷移 -->
+    <section class="script-block">
+        <div class="script-images">
+            <img src="img/Update.png" alt="大ジャンプ処理" class="scripts-img large">
+        </div>
+        <div class="script-text">
+            <h2>ユニット行動遷移</h2>
+            <p>
+                Updateで基本的なユニットの行動を関数で制御しています。
+            <p>
+                基本的にtargetが見つかっていないなら移動、敵を見つける処理を動作させ、targetが見つかったら攻撃処理に移行する
+                ようになっています。
+            </p>
+        </div>
+    </section>
+
+    <section class="script-block1">
+
+        <h2>Update内関数</h2>
+        <h2>Move</h2>
+        <div class="script-item1">
+            <img src="img/Move.png" class="scripts-img1">
+
+            <p>
+                自分のレイヤーによって上に進むか下に進むか判定しています。
+                もし自分がタワーの場合移動しないので処理をスキップする処理を入れています。
+            </p>
+        </div>
+        <h2>SearchTarget</h2>
+        <div class="script-item1">
+            <img src="img/SerachTarget.png" class="scripts-img1">
+            <p>
+                target（攻撃対象）を探索する処理を実装しました。
+                foreach文を用いて敵ユニット探索し、距離判定によって攻撃可能な対象を取得しています。
+                また、range変数を攻撃範囲として設定することで、値を調整するだけでユニットごとに
+                近距離・遠距離の特性を切り替えられる設計にしました。
+            </p>
+        </div>
+        <h2>MoveToTarget</h2>
+        <div class="script-item1">
+            <img src="img/MoveToTarget.png" class="scripts-img1">
+            <p>
+                攻撃処理に移行した際に敵が自分を無視して移動するユニットなら攻撃範囲から外れてしまうので、
+                ユニットを追いかける処理を実装しています。
+            </p>
+        </div>
+        <h2>Attack</h2>
+        <div class="script-item1">
+            <img src="img/Attack.png" class="scripts-img1">
+            <p>
+                攻撃処理では各ユニットのattackInterval(攻撃間隔)によって攻撃させます。
+                PlayAttackClientRpcという関数を呼ぶことによってクライアントでもホストでも
+                同じように攻撃処理が発動するようにしています。
+            </p>
+        </div>
+
+    </section>
+
+
+
+
+    <section class="script-block">
+        <div class="script-images">
+            <img src="img/Spawn.png" alt="大ジャンプ処理" class="scripts-img large">
+        </div>
+        <div class="script-text">
+            <h2>ユニットスポーン処理</h2>
+            <p>
+                NGO（Netcode for GameObjects）を用いたユニット生成処理を実装しました。
+            </p>
+            <p>
+                クライアントから送信されたServerRpc内で送信元のClientIDを取得し、対応するプレイヤー情報（PlayerState）を取得しています。
+            </p>
+            <p>
+                生成前にエリクサー（コスト）不足の判定を行い、
+                問題がなければコストを消費した上で、受け取ったunitIDに応じて生成するユニットPrefabを切り替える仕組みにしています。
+                その後、サーバー側でユニットを生成し、NetworkObjectのSpawn処理を行うことで全クライアントに同期されるようにしています。
+            </p>
+        </div>
+    </section>
+
+</body>
+
+</html>
