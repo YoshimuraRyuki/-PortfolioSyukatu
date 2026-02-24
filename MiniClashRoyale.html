@@ -134,6 +134,10 @@
     <section class="script-block">
         <div class="script-images">
             <img src="img/Spawn.png" alt="大ジャンプ処理" class="scripts-img large">
+
+            <video class="work-video" controls style="display: block; margin: -30 auto;">
+                <source src="video/エリクサーとスポーン.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="script-text">
             <h2>ユニットスポーン処理</h2>
@@ -147,6 +151,10 @@
                 生成前にエリクサー（コスト）不足の判定を行い、
                 問題がなければコストを消費した上で、受け取ったunitIDに応じて生成するユニットPrefabを切り替える仕組みにしています。
                 その後、サーバー側でユニットを生成し、NetworkObjectのSpawn処理を行うことで全クライアントに同期されるようにしています。
+            </p>
+            <p>
+                また、左の動画ではユニットを出すときに使えるカードが分かりやすくなるクールタイムも実装しています。エリクサーはホストとクライアントが
+                同期せずに分けるようにしています。
             </p>
         </div>
     </section>
