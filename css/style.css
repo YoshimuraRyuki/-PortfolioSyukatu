@@ -311,12 +311,15 @@
 
 .script-images {
     display: flex;
-    flex-direction: column; /* ← ここがポイント */
+    flex-direction: column; 
     gap: 20px;
 }
 
 @media (max-width: 768px) {
     .script-block {
+        flex-direction: column;
+    }
+      .script-block1 {
         flex-direction: column;
     }
 

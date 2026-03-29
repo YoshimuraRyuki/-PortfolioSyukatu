@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-       <header style="
+    <header style="
         background-image: url('img/背景.jpg');
         background-size: cover;
         background-position: center;
@@ -27,9 +29,59 @@
             くっつけ!じしゃ君詳細ページ
         </h1>
     </header>
+    <a href="index.html" class="work-detail-link" style="font-size: 24px;">
+        ▶ 吉村竜希ポートフォリオに戻る
+    </a>
 
-    
+    <!-- 処理①：磁力エリア処理 -->
+    <section class="script-block">
+        <img src="img/磁力エリア.png" alt="先行入力処理" class="scripts-img">
 
+        <div class="script-text">
+            <h2>磁力エリア</h2>
+            <p>
+                このエリアに磁力をONにした状態で入ることで自分の磁極によって引き寄せるか反発するか判定しています。また、磁力の大きさが決まっていてそれに応じて
+                どちらが引っ張る側かを判定して処理しています。
+            </p>
+            <p>
+                Repelという関数で磁極が同じなら反発するようになっています。初めにif文で磁極が同じか判定することでこの処理をしなかった場合に下の処理は
+                磁極が違うと判定できています。
+            </p>
+            <p>
+                一番下の関数AttractToCenterは、自分とオブジェクトお互いが引き寄せ合うようなこともできます。
+            </p>
+        </div>
+    </section>
+
+    <!-- 処理②：反発処理 -->
+    <section class="script-block">
+        <img src="img/反発スクリプト.png" alt="先行入力処理" class="scripts-img">
+
+        <div class="script-text">
+            <h2>磁石反発処理</h2>
+            <p>
+                transform.positionをお互い反発するように計算処理を入れて瞬間的にするためにplayerRepelVelocityに速度をセットしてUpdate内で移動させる処理を入れています。
+                repelPowerを調整することによって反発力を調整することができます。
+            </p>
+
+        </div>
+    </section>
+
+    <!-- 処理③：プレイヤー側に引っ張る処理 -->
+    <section class="script-block">
+        <img src="img/プレイヤー側を引っ張る処理.png" alt="先行入力処理" class="scripts-img">
+
+        <div class="script-text">
+            <h2>磁石引き寄せ処理</h2>
+            <p>
+                attractPowerを調整することによって引き寄せの力が変わります。キャラクターコンポーネントを使用しているためcc.Moveでプレイヤーをオブジェクトのほうへ
+                引き寄せるように処理を組んでいます。
+            </p>
+
+
+        </div>
+    </section>
 
 </body>
+
 </html>
