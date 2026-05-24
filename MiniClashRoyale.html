@@ -86,20 +86,27 @@
         </div>
     </section>
 
-    <section class="script-block1">
+    <h2>Update内関数</h2>
 
-        <h2>Update内関数</h2>
-        <h2>Move</h2>
-        <div class="script-item1">
-            <img src="img/Move.png" class="scripts-img1">
-                <p>
+    <section class="script-block">
+        <div class="script-images">
+            <img src="img/Move.png" class="scripts-img large">
+        </div>
+        <div class="script-text">
+            <h2>Move</h2>
+            <p>
                 自分のレイヤーによって上に進むか下に進むか判定しています。
                 もし自分がタワーの場合移動しないので処理をスキップする処理を入れています。
             </p>
         </div>
-        <h2>SearchTarget</h2>
-        <div class="script-item1">
+    </section>
+
+    <section class="script-block">
+        <div class="script-images">
             <img src="img/SerachTarget.png" class="scripts-img1">
+        </div>
+        <div class="script-text">
+            <h2>SearchTarget</h2>
             <p>
                 target（攻撃対象）を探索する処理を実装しました。
                 foreach文を用いて敵ユニット探索し、距離判定によって攻撃可能な対象を取得しています。
@@ -107,17 +114,27 @@
                 近距離・遠距離の特性を切り替えられる設計にしました。
             </p>
         </div>
-        <h2>MoveToTarget</h2>
-        <div class="script-item1">
+    </section>
+
+    <section class="script-block">
+        <div class="script-images">
             <img src="img/MoveToTarget.png" class="scripts-img1">
+        </div>
+        <div class="script-text">
+            <h2>MoveToTarget</h2>
             <p>
                 攻撃処理に移行した際に敵が自分を無視して移動するユニットなら攻撃範囲から外れてしまうので、
                 ユニットを追いかける処理を実装しています。
             </p>
         </div>
-        <h2>Attack</h2>
-        <div class="script-item1">
+    </section>
+
+    <section class="script-block">
+        <div class="script-images">
             <img src="img/Attack.png" class="scripts-img1">
+        </div>
+        <div class="script-text">
+            <h2>Attack</h2>
             <p>
                 攻撃処理では各ユニットのattackInterval(攻撃間隔)によって攻撃させます。
                 PlayAttackClientRpcという関数を呼ぶことによってクライアントでもホストでも

@@ -6,6 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>吉村 竜希-ポートフォリオサイト</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+
+    <style>
+        /* スクリプトを表示するコンテナのスタイル */
+        .script-container {
+            width: 100%;
+            max-width: 800px;
+            /* 幅の最大値 */
+            height: 300px;
+            /* ★表示する高さ（ここを変えて調整） */
+            overflow-y: auto;
+            /* ★縦スクロールを有効にする */
+            overflow-x: auto;
+            /* 横スクロールも有効に */
+            background-color: #282c34;
+            /* 背景色（ダークテーマ風） */
+            color: #abb2bf;
+            /* 文字色 */
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            /* 等幅フォント */
+            border-radius: 5px;
+            border: 1px solid #444;
+            white-space: pre;
+            /* 改行やスペースを維持 */
+            line-height: 1.5;
+        }
+
+        /* キーワードのハイライト（任意） */
+        .keyword {
+            color: #c678dd;
+        }
+
+        .class {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .comment {
+            color: #5c6370;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -45,6 +92,8 @@
                         <li><a href="#2">スピードラン</a></li>
                         <li><a href="#3">ミニクラッシュ・ロワイアル</a></li>
                         <li><a href="#4">ギャラクシアン(再現)</a></li>
+                        <li><a href="#5">ゲームジャム作品</a></li>
+                        <li><a href="#6">ステルスゲーム(現在制作中)</a></li>
                     </ul>
                 </li>
             </ul>
@@ -102,7 +151,7 @@
                     <source src="video/ゲームプレイ動画.mp4" type="video/mp4">
                 </video>
 
-              <a href="work1.html" class="work-detail-link" style="font-size: 24px;">
+                <a href="work1.html" class="work-detail-link" style="font-size: 24px;">
                     ▶ 詳細ページを見る
                 </a>
             </div>
@@ -135,6 +184,10 @@
                     <tr>
                         <th>制作期間</th>
                         <td>5ヶ月</td>
+                    </tr>
+                    <tr>
+                        <th>担当箇所</th>
+                        <td>磁石のくっつき反発システム・プレイヤーの行動処理</td>
                     </tr>
                 </table>
 
@@ -190,6 +243,10 @@
                         <th>制作期間</th>
                         <td>2週間</td>
                     </tr>
+                    <tr>
+                        <th>担当箇所</th>
+                        <td>全て</td>
+                    </tr>
                 </table>
 
 
@@ -210,12 +267,12 @@
 
         <section class="profile-video work">
             <div class="work-video-area">
-            <video class="work-video" controls>
-                <source src="video/ゲーム説明動画.mp4" type="video/mp4">
-            </video>
-            <a href="MiniClashRoyale.html" class="work-detail-link" style="font-size: 24px;">
-                ▶ 詳細ページを見る
-            </a>
+                <video class="work-video" controls>
+                    <source src="video/ゲーム説明動画.mp4" type="video/mp4">
+                </video>
+                <a href="MiniClashRoyale.html" class="work-detail-link" style="font-size: 24px;">
+                    ▶ 詳細ページを見る
+                </a>
             </div>
             <div class="profile-text work-text">
 
@@ -244,11 +301,15 @@
                         <th>制作期間</th>
                         <td>1ヶ月</td>
                     </tr>
+                    <tr>
+                        <th>担当箇所</th>
+                        <td>全て</td>
+                    </tr>
                 </table>
 
 
                 <p>
-                    <strong>概要：</strong>現在制作中の「クラッシュ・ロワイアル」を参考にしたミニ版です。本来レーンが三つあるのを一つにしています。
+                    <strong>概要：</strong>「クラッシュ・ロワイアル」を参考にしたミニ版です。本来レーンが三つあるのを一つにしています。
                 </p>
                 <p>
                     <strong>アピールポイント：</strong>Netcode for GameObjects(NGO)を使用してオンライン通信機能を開発しています。
@@ -294,6 +355,10 @@
                         <th>制作期間</th>
                         <td>3ヶ月</td>
                     </tr>
+                    <tr>
+                        <th>担当箇所</th>
+                        <td>レッドエイリアンとボスエイリアンの動きの処理作成</td>
+                    </tr>
                 </table>
 
 
@@ -305,6 +370,1153 @@
                 </p>
             </div>
         </section>
+
+        <!-- 作品5 -->
+        <section id="5" class="section-header">
+            <h2 class="section-title">ゲームジャム作品</h2>
+        </section>
+
+        <div class="profile-text work-text">
+            <p>
+                <strong>概要：</strong>3日間の中で、提示された「お題」に沿って即興でゲームを制作するイベントです。
+                プログラマー、デザイナー、サウンドクリエイターなどが集まり、即席のチームで製作してきました。
+
+            </p>
+        </div>
+
+        <section class="profile-video work">
+            <div class="modalList-item js-item">
+                <a href="javascript:void(0);" class="js-modal">
+                    <div class="modalButton-img">
+                        <img src="img/SnakeBlockサムネ.png" alt="">
+                    </div>
+
+                    <h3>
+                        クリックで詳細表示<br>
+                    </h3>
+                </a>
+                <div class="modal">
+                    <div class="modal-container">
+                        <div class="modal-inner">
+                            <div class="modal-contents">
+                                <div class="modalInner-img">
+                                    <video class="work-video" controls>
+                                        <source src="video/SnakeBlock作品動画.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="modalInner-item">
+                                    <p><strong>作品名：</strong>SnakeBlock
+                                        <br><strong>制作人数：</strong>4人 (全員プログラマー)
+                                        <br><strong>制作環境：</strong>Unity
+                                        <br><strong>概要：</strong>この作品は2年生の4月に約40人いるクラスでランダムな4～5人のチームを組み制作した作品です。
+                                        今回のテーマは「さく」だったので私たちのチームは「さく」から「さくで何かを囲う」を連想してスネークゲーム
+                                        をイメージして作成しました。
+                                        <br><strong>担当箇所：</strong>敵(動画内の手裏剣)の生成処理。敵の状態遷移作成です。
+
+                                    <h3>Enemy.cs</h3>
+
+                                    <!-- スクロール可能なコードエリア -->
+                                    <div class="script-container">
+                                        <pre><code>
+using UnityEngine;
+using Gloval;
+
+public class Enemy : MonoBehaviour
+{
+    public enum EnemyState
+    {
+        IDLE,
+        MOVE,
+    }
+    
+    BoardManager bm;
+    PlayerManager pm;
+    GameManager gm;
+    //EnemyGenerator eg;
+
+    [Tooltip("状態変数"), SerializeField]
+    EnemyState state = EnemyState.IDLE;
+
+    [Tooltip("移動の目標地点") ,SerializeField]
+    Vector3 targetPos;
+    [Tooltip("移動速度")]
+    float moveSpeed = 3f;
+    [Tooltip("移動速度乱数")]
+    float randMoveSpeedRatio;
+
+    [Tooltip("待機時間計測")] 
+    float stateTimer;
+
+    [Tooltip("消滅アニメーション"), SerializeField]
+    GameObject prfbBreakAnim;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        bm = GameObject.Find("BoardManager").GetComponent<BoardManager>();
+        pm = GameObject.Find("Player").      GetComponent<PlayerManager>();
+        gm = GameObject.Find("GameManager"). GetComponent<GameManager>();
+
+        //eg = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //ゲーム中のみ.
+        if (gm.startFlag && !gm.gameOverFlag)
+        {
+            // 状態遷移処理
+            State();
+
+            Vector2Int position = Gl_Func.WPosToBPos(transform.position);
+            if (bm.Board[position.x, position.y].type == BoardType.PLAYER_AREA)
+            {
+                EnemyDeath();
+            }
+        }
+    }
+
+    /// <summary>
+    /// 状態ごとの処理
+    /// </summary>
+    void State()
+    {
+        switch (state)
+        {
+            case EnemyState.IDLE:
+                //待機
+                EnemyIdle();
+                break;
+            case EnemyState.MOVE:
+                //移動
+                EnemyMove();
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 待機状態処理
+    /// </summary>
+    void EnemyIdle()
+    {
+        if(stateTimer > 0)
+        {
+            stateTimer -= Time.deltaTime;
+        }
+        else
+        {
+            print("待機終了");
+            SetGoalMove();
+        }
+    }
+
+    // todo:敵の動き
+    /// <summary>
+    /// 敵の移動処理  
+    /// </summary>
+    void EnemyMove()
+    {
+        var tmpPos = transform.position; //現在座標の仮取得.
+        var dis = targetPos - tmpPos;    //目標地点までの座標差(distance)
+
+        //仮で移動したとする.
+        tmpPos += dis.normalized * moveSpeed * randMoveSpeedRatio * Time.deltaTime;
+        
+        //何のマスに乗ってるかで処理を分ける.
+        Vector2Int bpos = Gl_Func.WPosToBPos(tmpPos);
+        switch (bm.Board[bpos.x, bpos.y].type)
+        {
+            case BoardType.PLAYER_AREA:
+                SetGoalMove();
+                break;
+            case BoardType.PLAYER_TRAIL:
+                pm.PlayerDeath();
+                break;
+            case BoardType.NONE:
+                transform.position = tmpPos; //実際に移動する.
+                break;
+        }
+        
+        //目標地点に着いたら(一定範囲)
+        if ((targetPos - transform.position).magnitude < Gl_Const.ENM_GOAL_STOP_RANGE)
+        {
+            SetGoalMove();
+        }
+    }
+    
+    void EnemyDeath()
+    {
+        gm.deathEnemyCnt++;  //死亡数+1.
+        
+        var obj = Instantiate(prfbBreakAnim);
+        obj.transform.position = transform.position;
+        
+        Destroy(gameObject); //自身を消滅.
+    }
+
+    /// <summary>
+    /// 移動開始時の処理と、目標座標の決定
+    /// </summary>
+    void SetGoalMove()
+    {
+        print("移動開始");
+        state = EnemyState.MOVE;
+        
+        Vector2 pos = transform.position;
+        pos = Gl_Func.LimPosInBoard(pos);
+        transform.position = pos;
+
+        //目標地点の抽選.
+        {
+            int rndX = Random.Range(0, Gl_Const.BOARD_WID - 1);
+            int rndY = Random.Range(0, Gl_Const.BOARD_HEI - 1);
+
+            //その座標が無マスなら.
+            if (bm.Board[rndX, rndY].type == BoardType.NONE)
+            {
+                var wPos = Gl_Func.BPosToWPos(new Vector2Int(rndX, rndY));
+                targetPos = Gl_Func.LimPosInBoard(wPos);
+            }
+        }
+
+        randMoveSpeedRatio = Random.Range(
+            Gl_Const.ENM_MIN_MOVE_SPEED, Gl_Const.ENM_MAX_MOVE_SPEED
+        );
+    }
+}
+
+</code></pre>
+                                    </div>
+                                    <h3>EnemyGenerator.cs</h3>
+                                    <div class="script-container">
+                                        <pre><code>
+using System;
+using System.Collections;
+using UnityEngine;
+using Gloval;
+
+public class EnemyGenerator : MonoBehaviour
+{
+    [Tooltip("生成するプレハブ"), SerializeField]
+    public GameObject prefabItem;
+
+    [Tooltip("プレハブを入れるオブジェクト"), SerializeField]
+    GameObject prefabInObj;
+
+    [Tooltip("GameManagerのscript"), SerializeField]
+    GameManager scptGameMng;
+
+    [Tooltip("BoardManagerのscript"), SerializeField]
+    BoardManager scptBoardMng;
+
+    void Start()
+    {
+        StartCoroutine(WaitStart()); 
+    }
+
+    /// <summary>
+    /// スタートするまで待機する用.
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator WaitStart()
+    {
+        //スタートを押されるまでループ.
+        while (!scptGameMng.startFlag)
+        {
+            yield return null;
+        }
+
+        //モード別で出現実行.
+        switch (scptGameMng.gameMode) {
+
+            case GameMode.TimeUp:
+                StartCoroutine(EnmSpawnTimeUp());
+                break;
+        
+            case GameMode.AllBreak:
+                StartCoroutine(EnmSpawnAllBreak());
+                break;
+        }
+    }
+
+    /// <summary>
+    /// ランダム生成処理(TimeUpモード)
+    /// </summary>
+    public IEnumerator EnmSpawnTimeUp()
+    {
+        yield return new WaitForSeconds(3); //3秒の猶予.
+
+        //最初に何体か出す.
+        for (int i = 0; i < Gl_Const.ENM_TIMEUP_INIT_CNT; i++) 
+        {
+            EnemySpawnExe();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //ゲーム終了するまでループ.
+        while (!scptGameMng.gameOverFlag)
+        {
+            //最大出現数になってるなら待機.
+            if (scptGameMng.GetEnemyCount() >= Gl_Const.ENM_TIMEUP_MAX_CNT)
+            {
+                yield return null;
+                continue;
+            }
+
+            //遅延時間の抽選.
+            float delay = UnityEngine.Random.Range(
+                Gl_Const.ENM_TIMEUP_MIN_INTERVAL,
+                Gl_Const.ENM_TIMEUP_MAX_INTERVAL
+            );
+            yield return new WaitForSeconds(delay);
+
+            //敵を追加.
+            EnemySpawnExe();
+        }
+    }
+
+    /// <summary>
+    /// ランダム生成処理(AllBreakモード)
+    /// </summary>
+    public IEnumerator EnmSpawnAllBreak()
+    {
+        yield return new WaitForSeconds(3); //3秒の猶予.
+
+        //最初に何体か出す.
+        for (int i = 0; i < Gl_Const.ENM_ALLBREAK_MAX_CNT; i++)
+        {
+            EnemySpawnExe();
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    /// <summary>
+    /// 敵を出現.
+    /// </summary>
+    public void EnemySpawnExe()
+    {
+        //出現座標抽選.
+        int rndX = UnityEngine.Random.Range(10, Gl_Const.BOARD_WID - 1);
+        int rndY = UnityEngine.Random.Range(10, Gl_Const.BOARD_HEI - 1);
+
+        //その座標が無マスなら.
+        if (scptBoardMng.Board[rndX, rndY].type == BoardType.NONE)
+        {
+            //敵出現.
+            var obj = Instantiate(prefabItem, prefabInObj.transform);
+            //座標を抽選して配置.
+            obj.transform.position = Gl_Func.BPosToWPos(new Vector2Int(rndX, rndY));
+        }
+    }
+
+    /// <summary>
+    /// 敵のオブジェクトを取得する処理
+    /// </summary>
+    public GameObject[] GetEnemyObjects()
+    {
+        // タグ「Enemy」を持つ全てのオブジェクトの取得
+        GameObject[] Square = GameObject.FindGameObjectsWithTag("Enemy");
+
+        return Square;
+    }
+}
+
+                                            </code></pre>
+                                    </div>
+                                </div>
+
+
+                                </p>
+                            </div>
+                            <div class="modal-button-wrap">
+                                <button class="modal-button" type="button">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+            <!-- </section> -->
+
+
+
+
+
+
+            <!-- <section class="profile-video work"> -->
+            <div class="modalList-item js-item">
+                <a href="javascript:void(0);" class="js-modal">
+                    <div class="modalButton-img">
+                        <img src="img/PineFlatShootingサムネ.png" alt="">
+                    </div>
+
+                    <h3>
+                        クリックで詳細表示<br>
+                    </h3>
+                </a>
+                <div class="modal">
+                    <div class="modal-container">
+                        <div class="modal-inner">
+                            <div class="modal-contents">
+                                <div class="modalInner-img">
+                                    <video class="work-video" controls>
+                                        <source src="video/PineFlat動画.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="modalInner-item">
+                                    <p><strong>作品名：</strong>Pine Flat Shooting
+                                        <br><strong>制作人数：</strong>5人(プログラマー3人・デザイナー1人・サウンドクリエーター1人)
+                                        <br><strong>制作環境：</strong>Unity
+                                        <br><strong>概要：</strong>この作品は1年次の3月に制作しました。
+                                        今回のテーマは「かね」でした。かねから黄金を連想してそれに似あう人物をイメージしてインパクト抜群で、つい笑ってしまうようなゲームを作成しました。
+                                        デザインとサウンドは元のあるものをオマージュして作成していただきました。
+
+                                        <br><strong>担当箇所：</strong>プレイヤー移動。アイテムを投げる処理。残機システム。プレイヤーとマウスの移動できる場所指定。
+
+                                    <h3>Player.cs</h3>
+
+                                    <!-- スクロール可能なコードエリア -->
+                                    <div class="script-container">
+                                        <pre><code>
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Device;
+using Utility;
+using static UnityEngine.GraphicsBuffer;
+
+public class Player : MonoBehaviour
+{
+    BulletManager bm;
+    ItemGenerator ig;
+    GameManager gm;
+
+    [Tooltip("マウスカーソル取得")]
+    public GameObject Square;
+
+    [Tooltip("アイテム取得")]
+    public GameObject prefabItem;
+
+    [Tooltip("移動速度")]
+    float moveSpeed = 5f;
+
+    [Tooltip("残機")]
+    public int hp { get; private set; } = Common.PLAYER_HP;
+
+    [Tooltip("アニメーター")]
+    Animator animator;
+
+    [Tooltip("持っているか")]
+    bool isHaveItem = false;
+    [Tooltip("所持アイテムID")]
+    BulletType haveItemType;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        bm = GameObject.Find("BulletManager").GetComponent<BulletManager>();
+        ig = GameObject.Find("ItemGenerator").GetComponent<ItemGenerator>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        animator = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (gm.isStarted)
+        {
+            PlayerMovement();
+            NotOutsideScreen();
+            ThrowButton();
+            //if(Input.GetKeyDown(KeyCode.Space)) {
+            //    RemainingLives();
+            //}
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+
+        var tag = c.gameObject.tag;
+        if (tag == "Item")
+        {
+            if (isHaveItem != true)
+            {
+                haveItemType = c.gameObject.GetComponent<Item>().bulletType;
+                gm.GetItem(haveItemType);
+                Destroy(c.gameObject);
+                isHaveItem = true;
+                ig.DecCnt();
+            }
+        }
+
+
+    }
+
+    // todo.上下左右に移動
+    /// <summary>
+    /// プレイヤー移動処理
+    /// </summary>
+    public void PlayerMovement()
+    {
+        //var(lb, rt) = Common.GetWorldWindowSize();
+        bool isMove = false;
+
+        if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.W)))
+        {
+            transform.position += new Vector3(0, 1, 0) * moveSpeed * Time.deltaTime;
+            isMove = true;
+        }
+        if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.S)))
+        {
+            transform.position += new Vector3(0, -1, 0) * moveSpeed * Time.deltaTime;
+            isMove = true;
+        }
+        if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A)))
+        {
+            transform.position += new Vector3(-1, 0, 0) * moveSpeed * Time.deltaTime;
+            var ls = transform.localScale;
+            if(ls.x < 0)
+            {
+                ls.x *= -1;
+            }
+            transform.localScale = ls;
+            isMove = true;
+        }
+        if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.D)))
+        {
+            transform.position += new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime;
+            var ls = transform.localScale;
+            if (ls.x > 0)
+            {
+                ls.x *= -1;
+            }
+            transform.localScale = ls;
+            isMove = true;
+        }
+
+        if (isMove)
+        {
+            animator.ResetTrigger("Idle");
+            animator.SetTrigger("Move");
+        }
+        else
+        {
+            animator.ResetTrigger("Move");
+            animator.SetTrigger("Idle");
+        }
+    }
+
+    // todo.画面外に出ない
+    /// <summary>
+    /// プレイヤーが画面外に出ない処理
+    /// </summary>
+    public void NotOutsideScreen()
+    {
+        var (lb, rt) = Common.GetWorldWindowSize();
+
+        if (transform.position.x < lb.x + Common.MARGIN_LEFT)
+        {
+            transform.position = new Vector3(lb.x + Common.MARGIN_LEFT, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > 0 - Common.MARGIN_RIGHT)
+        {
+            transform.position = new Vector3(0 - Common.MARGIN_RIGHT, transform.position.y, transform.position.z);
+        }
+        if (transform.position.y > rt.y - Common.MARGIN_TOP)
+        {
+            transform.position = new Vector3(transform.position.x, rt.y - Common.MARGIN_TOP, transform.position.z);
+        }
+        if (transform.position.y < lb.y + Common.MARGIN_BOTTOM)
+        {
+            transform.position = new Vector3(transform.position.x, lb.y + Common.MARGIN_BOTTOM, transform.position.z);
+        }
+
+    }
+
+
+    // todo.投げるボタン
+    /// <summary>
+    /// クリックでアイテムを投げる処理
+    /// </summary>
+    public void ThrowButton()
+    {
+        //マウスカーソルの制限
+        var (lb, rt) = Common.GetWorldWindowSize();
+        var mPos = Common.GetWorldMousePos();
+
+        Square.transform.position = new Vector3(mPos.x, mPos.y, Square.transform.position.z);
+
+        if (Square.transform.position.x < 0 + Common.MARGIN_LEFT)
+        {
+            Square.transform.position = new Vector3(0 + Common.MARGIN_LEFT, Square.transform.position.y, Square.transform.position.z);
+        }
+        if (Square.transform.position.x > rt.x - Common.MARGIN_RIGHT)
+        {
+            Square.transform.position = new Vector3(rt.x - Common.MARGIN_RIGHT, Square.transform.position.y, Square.transform.position.z);
+        }
+        if (Square.transform.position.y > rt.y - Common.MARGIN_TOP)
+        {
+            Square.transform.position = new Vector3(Square.transform.position.x, rt.y - Common.MARGIN_TOP, Square.transform.position.z);
+        }
+        if (Square.transform.position.y < lb.y + Common.MARGIN_BOTTOM)
+        {
+            Square.transform.position = new Vector3(Square.transform.position.x, lb.y + Common.MARGIN_BOTTOM, Square.transform.position.z);
+        }
+
+        //左クリックしたとき
+        if (Input.GetMouseButtonDown(0) && isHaveItem && bm != null)
+        {
+            Vector3 startPos = transform.position;  // 発射位置（自分の位置）
+            Vector3 targetPos = Square.transform.position;
+            targetPos.z = 0f;  // 2Dの場合Z軸を0に固定
+
+            bm.Generate(haveItemType, startPos, targetPos, Common.TAG_PLAYER);
+            // 投げるときのSE
+            SoundManager.Instance.PlaySE(Sounds.SEType.Throw);
+            //撃つ処理
+            isHaveItem = false;
+            gm.ThrowItem();
+        }
+
+    }
+
+    // todo.体力残機　当たった後の無敵時間を作る
+    /// <summary>
+    /// 残機システム
+    /// </summary>
+    public void RemainingLives()
+    {
+        hp--;
+        gm.UIPlayerDamage(hp);
+        SoundManager.Instance.PlaySE(Sounds.SEType.Damage);
+
+        if (hp <= 0)
+        {
+            print("死んだ");
+        }
+    }
+
+
+    public void HideFocus()
+    {
+        Square.SetActive(false);
+    }
+
+    public void ShowFocus()
+    {
+        Square.SetActive(true);
+    }
+}
+
+
+                                    </div>
+                                </div>
+
+
+                                </p>
+                            </div>
+                            <div class="modal-button-wrap">
+                                <button class="modal-button" type="button">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="modalList-item js-item">
+                <a href="javascript:void(0);" class="js-modal">
+                    <div class="modalButton-img">
+                        <img src="img/CarryTogetherサムネ.png" alt="">
+                    </div>
+
+                    <h3>
+                        クリックで詳細表示<br>
+                    </h3>
+                </a>
+                <div class="modal">
+                    <div class="modal-container">
+                        <div class="modal-inner">
+                            <div class="modal-contents">
+                                <div class="modalInner-img">
+                                    <video class="work-video" controls>
+                                        <source src="video/CarryTogetherプレイ動画.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="modalInner-item">
+                                    <p><strong>作品名：</strong>CarryTogether
+                                        <br><strong>制作人数：</strong>5人(プログラマー3人・プランナー1人・デザイナー2人)
+                                        <br><strong>制作環境：</strong>Unity
+                                        <br><strong>概要：</strong>この作品は2年次の3月に制作しました。今回のテーマは「引っ越し」でした。
+                                        引っ越しから連想して荷物運びというゲーム性がある作品を制作しました。
+                                        <br><strong>担当箇所：</strong>二人で家具を運ぶときの回転処理。壁に当たった時に家具の体力を減らす処理。サウンドマネージャー作成。UIとプレイヤーの掴む処理などの結合作業。
+
+                                    <h3>ObjectLocation.cs(オブジェクト回転処理)</h3>
+
+                                    <!-- スクロール可能なコードエリア -->
+                                    <div class="script-container">
+                                        <pre><code>
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEngine.GraphicsBuffer;
+
+public class ObjectLocation : MonoBehaviour
+{
+    #region 宣言
+
+    [SerializeField] private int weight; // 重さ
+    [SerializeField] private int power;  // このオブジェクトにかかっている力
+
+    public GameObject player1;
+    public GameObject player2;
+
+    Player pl1;
+    Player pl2;
+
+    [SerializeField] int holdCnt = 0;
+
+    [SerializeField] bool isGrab1 = false;
+    [SerializeField] bool isGrab2 = false;
+    public bool isCheck = false;
+    bool isStopping = false;
+
+    float distancePlayer;
+    float baseAngle; // 初期角度
+
+    public Vector3 hitNormal;
+    Vector2 prevPos1;
+    Vector2 prevPos2;
+    Rigidbody2D rb;
+    #endregion
+
+    #region Set関数
+    public void AddPower(int _power)
+    {
+        power += _power;
+    }
+
+    public void SubtractPower(int _power)
+    {
+        power -= _power;
+        if (power < 0) { power = 0; }
+    }
+
+    public void SetIsGrab1(bool flg)
+    {
+        isGrab1 = flg;
+    }
+
+    public void SetIsGrab2(bool flg)
+    {
+        isGrab2 = flg;
+    }
+
+    public void AddHoldCnt()
+    {
+        holdCnt++;
+    }
+
+    public void SubtractHoldCnt()
+    {
+        holdCnt--;
+    }
+    #endregion
+
+    #region Get関数
+    public bool GetCanHold()
+    {
+        return power >= weight;
+    }
+
+    public int GetHoldCnt()
+    {
+        return holdCnt;
+    }
+
+    public bool GetIsGrab1()
+    {
+        return isGrab1;
+    }
+
+    public bool GetIsGrab2()
+    {
+        return isGrab2;
+    }
+    #endregion
+
+    #region 回転処理
+
+    /// <summary>
+    /// 家具を回転させる処理
+    /// </summary>
+    void FurnitureLocation()
+    {
+        Vector2 posA = player1.transform.position;
+        Vector2 posB = player2.transform.position;
+
+        // 中間位置
+        Vector2 center = (posA + posB) / 2f;
+        rb.MovePosition(center);
+
+        Vector2 leftPos, rightPos;
+
+        if(posA.x <= posB.x)
+        {
+            leftPos = posA;
+            rightPos = posB;
+        }
+        else
+        {
+            leftPos = posB;
+            rightPos = posA;
+        }
+
+        // 向き
+        Vector2 dir = rightPos - leftPos;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        rb.MoveRotation(angle);
+    }
+
+    void AdjustPlayers()
+    {
+        Vector2 inputA = pl1.GetMoveInput(); // 入力を取る
+        Vector2 inputB = pl2.GetMoveInput();
+
+        // 微小入力カット
+        if (inputA.magnitude < 0.1f) inputA = Vector2.zero;
+        if (inputB.magnitude < 0.1f) inputB = Vector2.zero;
+
+        Vector2 posA = player1.transform.position;
+        Vector2 posB = player2.transform.position;
+        Vector2 dir = (posB - posA).normalized;
+        Vector2 moveA = posA - prevPos1;
+        Vector2 moveB = posB - prevPos2;
+        float magA = moveA.magnitude;
+        float magB = moveB.magnitude;
+
+        // 両方入力してる
+        if (inputA != Vector2.zero && inputB != Vector2.zero)
+        {
+            float dot = Vector2.Dot(inputA.normalized, inputB.normalized);
+
+            if (dot > 0.5f) // 同じ方向
+            {
+                Vector2 move = (inputA + inputB) / 2f * Time.deltaTime * 5f;
+
+                player1.transform.position += (Vector3)move;
+                player2.transform.position += (Vector3)move;
+            }
+            else
+            {
+                // 方向違うなら止める
+                player1.transform.position = prevPos1;
+                player2.transform.position = prevPos2;
+            }
+        }
+        //プレイヤー1が止まっている時プレイヤー2だけ動く
+            else if (magA < 0.01f && magB > 0.01f)
+        {
+            if (isStopping) return;
+            print("D");
+            Vector2 newPosB = posA + dir * distancePlayer;
+            player2.transform.position = newPosB;
+        }
+        // プレイヤー2が止まっているときにプレイヤー1だけ動く
+        else if (magB < 0.01f && magA > 0.01f)
+        {
+            if (isStopping) return;
+
+            print("E");
+            Vector2 newPosA = posB - dir * distancePlayer;
+            player1.transform.position = newPosA;
+        }
+    }
+
+    /// <summary>
+    /// 運ぶ処理
+    /// </summary>
+    /// <param name="player"></param>
+    public void Group(GameObject player)
+    {
+        if (player == player1) isGrab1 = true;
+        if (player == player2) isGrab2 = true;
+
+        if (isGrab1 && isGrab2)
+        {
+            //rb.isKinematic = true;
+            if (pl1.GetHoldFlg()) pl1.SetHoldFlg(false);
+            if (pl2.GetHoldFlg()) pl2.SetHoldFlg(false);
+
+            rb.constraints = RigidbodyConstraints2D.None;
+
+            // 距離保存
+            distancePlayer = Vector2.Distance(player1.transform.position, player2.transform.position);
+
+            // 初期角度を保存
+            //Vector2 dir = player2.transform.position - player1.transform.position;
+            //baseAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        }
+        else if(!isGrab1 || !isGrab2)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }
+    #endregion
+
+    #region Unityイベント
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        pl1 = player1.GetComponent<Player>();
+        pl2 = player2.GetComponent<Player>();
+
+        // rb.isKinematic = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isGrab1 && isGrab2)
+        {
+            FurnitureLocation();
+            AdjustPlayers();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        prevPos1 = player1.transform.position;
+        prevPos2 = player2.transform.position;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+
+        if (col.gameObject.CompareTag("Obstacle") || col.gameObject.CompareTag("Furniture"))
+        {
+            // 法線の取得
+            hitNormal = col.contacts[0].normal;
+            Debug.Log("衝突面の方向: " + hitNormal);
+   
+            //rb.isKinematic = false;
+            isCheck = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Obstacle") || col.gameObject.CompareTag("Furniture"))
+        {
+            //rb.isKinematic = true;
+            isCheck = false;
+        }
+    }
+
+    #endregion
+}
+
+
+                                    </div>
+
+
+                                    <h3>ObjectLife.cs(オブジェクトが壁に当たった時に体力を減らす処理)</h3>
+                                    
+
+                                    <!-- スクロール可能なコードエリア -->
+                                    <div class="script-container">
+                                        <pre><code>
+
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class ObjectLife : MonoBehaviour
+{
+    #region 宣言
+    [SerializeField]
+    int scoreObj = 100;
+
+    bool isTemetutyu = false;
+    bool isStop = false;
+    bool isBlink = false;
+
+    float cooldown = 3;
+
+    SpriteRenderer sr;
+    KoguchiUI koguchiUI;
+    [SerializeField]Clear clear;
+    
+    #endregion
+
+    #region 家具のスコアを減らす処理
+
+    /// <summary>
+    /// スコアを削減する処理
+    /// </summary>
+    public void ScoreLower(int score)
+    {
+        scoreObj -= score;
+        isTemetutyu = true;
+        OnDamege();
+        
+    }
+
+    void OnDamege()
+    {
+        InvokeRepeating("Blink", 0f, 0.5f);
+        Invoke("StopBlink", cooldown);
+    }
+
+    void Blink()
+    {
+        isBlink = !isBlink;
+        sr.enabled = isBlink;
+    }
+
+    void StopBlink()
+    {
+        CancelInvoke("Blink"); // 点滅停止
+        sr.enabled = true; // 最後は表示に戻す
+        isTemetutyu = false;
+    }
+
+    #endregion
+
+    #region Unityイベント
+    // Start is called before the first frame update
+    void Start()
+    {
+       sr = GetComponent<SpriteRenderer>();
+       koguchiUI = GameObject.Find("KoguchiUI").GetComponent<KoguchiUI>();
+       clear = GameObject.Find("ClearManager").GetComponent<Clear>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isTemetutyu) return;
+        
+        if (isStop)
+        {
+            ScoreLower(10);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Furniture"))
+        {
+            isStop = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Furniture"))
+        {
+            isStop = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("あたった");
+        if (collision.gameObject.CompareTag("CollectArea"))
+        {
+            koguchiUI.AddScore(scoreObj);
+            clear.ClearTotal(1);
+            Destroy(gameObject);
+        }
+    }
+    #endregion
+}
+
+                                    </div>
+                                </div>
+
+                                    </p>
+                            <div class="modal-button-wrap">
+                                <button class="modal-button" type="button">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+<!-- 作品6 -->
+        <section id="6" class="section-header">
+            <h2 class="section-title">ステルスゲーム</h2>
+        </section>
+
+        <section class="profile-video work">
+            <div class="work-video-area">
+                <video class="work-video" controls>
+                    <source src="video/ステルスゲーム開発中の動画編集済み.mp4" type="video/mp4">
+                </video>
+                
+            </div>
+            <div class="profile-text work-text">
+
+                <table class="work-table">
+                    <tr>
+                        <th class="empty"></th>
+                        <th class="header">内容</th>
+                    </tr>
+                    <tr>
+                        <th>プラットフォーム</th>
+                        <td>Windows PC</td>
+                    </tr>
+                    <tr>
+                        <th>言語</th>
+                        <td>C#</td>
+                    </tr>
+                    <tr>
+                        <th>開発環境</th>
+                        <td>Unity</td>
+                    </tr>
+                    <tr>
+                        <th>制作人数</th>
+                        <td>2人</td>
+                    </tr>
+                    <tr>
+                        <th>制作期間</th>
+                        <td>4月～現在</td>
+                    </tr>
+                      <tr>
+                        <th>担当箇所</th>
+                        <td>マップ生成・ミニマップ生成・敵のパトロール処理</td>
+                    </tr>
+                </table>
+
+
+                <p>
+                    <strong>概要：</strong>現在制作中のゲームです。
+                </p>
+                <p>
+                    <strong>アピールポイント：</strong>Netcode for GameObjects(NGO)を使用してオンライン通信機能を開発しています。
+                    現段階ではローカル環境でのホスト/クライアント通信の動作確認まで完了しており、インターネット経由でのオンライン対戦については今後実装予定です。
+                </p>
+            </div>
+        </section>
+
+
+
     </main>
 
     <!-- <footer>

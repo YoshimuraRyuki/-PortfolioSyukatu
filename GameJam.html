@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲームジャム作品担当箇所</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header style="
+        background-image: url('img/背景.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    ">
+
+        <h1 style="
+        color: rgb(0, 0, 0);
+        margin: 0;
+        font-size: clamp(40px, 8vw, 70px);
+        font-weight: bold;
+    ">
+            ゲームジャム作品担当箇所
+        </h1>
+    </header>
+    <a href="index.html" class="work-detail-link" style="font-size: 24px;">
+        ▶ 吉村竜希ポートフォリオに戻る
+    </a>
+    <!-- 処理①：先行入力処理 -->
+    <section class="script-block">
+        <img src="img/先行入力処理.png" alt="先行入力処理" class="scripts-img">
+
+        <div class="script-text">
+            <h2>先行入力処理</h2>
+            <p>
+                ジャンプ入力を少し早く行っても反応するようにするため、
+                入力を一定時間保持し、着地した瞬間にジャンプ処理を実行する仕組みを実装しました。
+            </p>
+            <p>
+                これにより、プレイヤーが操作しやすく、スピード感のあるプレイが可能になります。
+            </p>
+        </div>
+    </section>
+
+    <section class="script-block">
+        <video class="work-video" controls style="display: block; margin: -30 auto;">
+            <source src="video/先行入力動画.mp4" type="video/mp4">
+        </video>
+        <div class="script-text">
+            <h2>動画説明</h2>
+            <p>
+                デバック時に行ったためマウスのクリックを使用しています。
+            </p>
+            <p>
+                空中にいる時にタップするとジャンプを行う関数が一定時間有効になります。その時間内に地面に触れるとジャンプを行います。
+            </p>
+            <p>
+                先行入力によってジャンプしたらジャンプ可能というデバックが発動しています。
+            </p>
+        </div>
+    </section>
+
+
+    <!-- 処理②：大ジャンプ処理 -->
+    <section class="script-block">
+        <div class="script-images">
+            <img src="img/大ジャンプ上.png" alt="大ジャンプ処理" class="scripts-img large">
+            <img src="img/大ジャンプ下.png" alt="大ジャンプ処理" class="scripts-img large">
+        </div>
+        <div class="script-text">
+            <h2>大ジャンプ処理</h2>
+            <p>
+                通常ジャンプとは別に、タップ時に上にスワイプすることにより高くジャンプできる大ジャンプを実装しました。
+            </p>
+            <p>
+                プレイヤーは状況に応じてジャンプを使い分ける必要があり、
+                ルート選択の幅が広がります。
+            </p>
+        </div>
+    </section>
+
+    <section class="script-block">
+        <video class="work-video" controls style="display: block; margin: -30 auto;">
+            <source src="video/大ジャンプ動画.mp4" type="video/mp4">
+        </video>
+        <div class="script-text">
+            <h2>動画説明</h2>
+            <p>
+                デバック時に行ったためマウスのクリックを使用しています。
+            </p>
+            <p>
+                最初にタップした位置から最後に指が離された位置を計算してそれが上方向ならスワイプしてると判断して大ジャンプの処理を実行させています。
+            </p>
+            <p>
+                これによりプレイヤーがもし横や下方向にスワイプした際は通常のジャンプになるようになっています。
+            </p>
+        </div>
+    </section>
+
+</body>
+
+</html>
