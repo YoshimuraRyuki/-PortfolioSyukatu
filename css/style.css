@@ -563,3 +563,9 @@
     margin: 0;
     white-space: pre;
 }
+
+.work-video{
+    width: 700px;
+    height: 400px;
+    border-radius: 20px;
+}
