@@ -143,17 +143,14 @@
 
         <section class="profile-video work">
             <div class="work-video-area">
-<iframe
-    class="work-video"
-    src="https://www.youtube.com/embed/y5pR0UmbZ98"
-    title="YouTube video player"
-    frameborder="0"
-    allowfullscreen>
-</iframe>
-                <a href="https://drive.google.com/file/d/1vxApCW9jfFc0E8pp_rymOGmz6Pm_kIcn/view?usp=drive_link" class="work-detail-link" style="font-size: 24px;">
+                <iframe class="work-video" src="https://www.youtube.com/embed/y5pR0UmbZ98" title="YouTube video player"
+                    frameborder="0" allowfullscreen>
+                </iframe>
+                <a href="https://drive.google.com/file/d/1vxApCW9jfFc0E8pp_rymOGmz6Pm_kIcn/view?usp=drive_link"
+                    class="work-detail-link" style="font-size: 24px;">
                     ▶ 作品資料ファイルへ移動
                 </a>
-                
+
             </div>
             <div class="profile-text work-text">
 
@@ -182,7 +179,7 @@
                         <th>制作期間</th>
                         <td>4月～現在</td>
                     </tr>
-                      <tr>
+                    <tr>
                         <th>担当箇所</th>
                         <td>マップ生成・ミニマップ生成・敵AIシステム</td>
                     </tr>
@@ -196,7 +193,7 @@
                 <p>
                     <strong>アピールポイント：</strong>CSVデータを使って動的にステージを作成するシステムを作成し、拡張性がある設計を意識しました。
                     また、ステートマシンを利用した敵AIを実装し、ステルスゲームならではの敵の行動遷移をこだわって制作しました。
-                    
+
                 </p>
             </div>
         </section>
@@ -1521,6 +1518,839 @@ public class ObjectLife : MonoBehaviour
                 </div>
             </div>
             </div>
+
+
+                <div class="modalList-item js-item">
+                <a href="javascript:void(0);" class="js-modal">
+                    <div class="modalButton-img">
+                        <img src="img/キービジュ　タイトル有り.png" alt="">
+                    </div>
+
+                    <h3>
+                        クリックで詳細表示<br>
+                    </h3>
+                </a>
+                <div class="modal">
+                    <div class="modal-container">
+                        <div class="modal-inner">
+                            <div class="modal-contents">
+                                <div class="modalInner-img">
+                                     <iframe class="work-video" src="https://www.youtube.com/embed/kct0hCW-AJw"
+                                        title="YouTube video player" frameborder="0" allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="modalInner-item">
+                                    <p><strong>作品名：</strong>いたずら魔女の禁足地
+                                        <br><strong>制作人数：</strong>5人(プログラマー3人・デザイナー2人)
+                                        <br><strong>制作環境：</strong>Unity
+                                        <br><strong>概要：</strong>この作品は3年次の8月に制作しました。今回のテーマは「きん」でした。
+                                        きんから禁止や禁足地を連想し、縛りありの2Dアクションゲームを作成しました。
+                                        <br><strong>担当箇所：</strong>プレイヤーのアニメーション、動き。UIのカットイン演出。敵やギミックの結合作業。
+
+                                    <h3>PlayerManager .cs(プレイヤーのアニメーション、動き)</h3>
+
+                                    <!-- スクロール可能なコードエリア -->
+                                    <div class="script-container">
+                                        <pre><code>
+using DG.Tweening;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public class PlayerManager : MonoBehaviour
+{
+    #region インプットシステム
+
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private InputAction attackAction;
+    private InputAction jumpAction;
+    private InputAction dashAction;
+
+    #endregion
+
+    #region ステート
+
+    [SerializeField]
+    public enum WitchOrder
+    {
+        Nomal,
+        Attack,
+        Jump,
+        Dash
+    }
+    [SerializeField]
+    public WitchOrder order = WitchOrder.Nomal;
+
+    #endregion
+
+    #region コンポーネント
+
+    Rigidbody2D rb;
+    Animator am;
+    [SerializeField] private BoxCollider2D attackCollider;
+    Collider2D playerCollider;
+    private SpriteRenderer spriteRenderer;
+    CutInController cc;
+
+    #endregion
+
+    #region プレイヤー変数
+
+    [Header("移動設定")]
+    [SerializeField] float moveSpeed = 5f;
+    private Vector2 moveInput;
+
+    [Header("ジャンプ設定")]
+    [SerializeField] float jumpPower = 8f;
+
+    [Header("ダッシュ設定")]
+    [SerializeField] float dashSpeed = 8f;
+
+    //[Header("攻撃設定")]
+    //[SerializeField] int damagePower = 10;
+
+    [Header("残基設定")]
+    [SerializeField] int HP = 3;
+    [Header("ダメージ食らった際の無敵時間")]
+    [SerializeField] float interval = 5f;
+    float currentInterval;
+
+    [Header("残基UI")]
+    public GameObject zanki3;
+    public GameObject zanki2;
+    public GameObject zanki1;
+
+    [Header("UI参照")]
+    [SerializeField] RectTransform gameOverPanel;
+    [SerializeField] RectTransform gameClearPanel;
+    [Header("演出設定")]
+    [SerializeField] private float dropDuration = 0.8f; // 落下にかかる時間
+    [SerializeField] private float targetY = 0f;        // 画面中央のY座標
+    #endregion
+
+    #region 足音設定 (追加)
+
+    [Header("足音設定")]
+    [SerializeField] private float walkStepInterval = 0.4f; // 歩き時の足音間隔（秒）
+    [SerializeField] private float dashStepInterval = 0.25f; // 走り時の足音間隔（秒）
+    private float footstepTimer;
+
+    #endregion
+
+    #region フラグ管理
+
+    private bool isGrounded;
+    private bool isDashing;
+    bool isInterval;
+    bool isAttacking;
+
+    #endregion
+
+    #region 指令管理
+
+    /// <summary>
+    /// 魔女の指令によって変わるステート
+    /// </summary>
+    public void Order()
+    {
+        switch (order)
+        {
+            case WitchOrder.Nomal:
+                break;
+            case WitchOrder.Attack:
+                break;
+            case WitchOrder.Jump:
+                break;
+            case WitchOrder.Dash:
+                isDashing = false;
+                break;
+        }
+    }
+
+    #endregion
+
+    #region HP管理
+
+    /// <summary>
+    /// 無敵状態の処理
+    /// </summary>
+    private void HandleInvincibility()
+    {
+        if (!isInterval) return;
+
+        currentInterval += Time.deltaTime;
+
+        // 無敵時間中の点滅演出
+        if (spriteRenderer != null)
+        {
+            float alpha = Mathf.PingPong(Time.time * 10f, 1.0f) < 0.5f ? 0.3f : 1.0f;
+            spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
+        }
+
+        // 5秒経過したら無敵時間を解除
+        if (currentInterval >= interval)
+        {
+            isInterval = false;
+            currentInterval = 0f;
+
+            // 見た目を元に戻す
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+            }
+        }
+    }
+
+    /// <summary>
+    /// HP減らす処理
+    /// </summary>
+    /// <param name="damage"></param>
+    void TakeDamage(int damage)
+    {
+        HP -= damage;
+
+        isInterval = true;
+        currentInterval = 0f;
+
+        if(HP == 2)
+        {
+            zanki1.SetActive(false);
+        }
+        if(HP == 1)
+        {
+            zanki2.SetActive(false);
+        }
+
+        if (HP <= 0)
+        {
+            zanki3.SetActive(false);
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("ゲームオーバー");
+        ShowGameOver();
+    }
+
+    /// <summary>
+    /// ゲームオーバー演出を開始する
+    /// </summary>
+    public void ShowGameOver()
+    {
+        // パネルをアクティブ化
+        gameOverPanel.gameObject.SetActive(true);
+
+        // 時を止める
+        Time.timeScale = 0f; 
+
+        gameOverPanel.DOAnchorPosY(targetY, dropDuration)
+            .SetEase(Ease.OutBounce)
+            .SetUpdate(true);
+    }
+
+    /// <summary>
+    /// ゲームクリア演出を開始する
+    /// </summary>
+    public void ShowGameClear()
+    {
+        // パネルをアクティブ化
+        gameClearPanel.gameObject.SetActive(true);
+
+        // 時を止める
+        Time.timeScale = 0f;
+
+        gameClearPanel.DOAnchorPosY(targetY, dropDuration)
+            .SetEase(Ease.OutBounce)
+            .SetUpdate(true);
+    }
+
+    #endregion 
+
+    #region Input System
+
+    /// <summary>
+    /// 移動処理
+    /// </summary>
+    void Move()
+    {
+        float currentSpeed = isDashing ? dashSpeed : moveSpeed;
+
+        rb.linearVelocity = new Vector2(
+            moveInput.x * currentSpeed,
+            rb.linearVelocity.y
+        );
+
+        if (am != null)
+        {
+            // 移動入力があるかどうか
+            bool hasMoveInput = Mathf.Abs(moveInput.x) > 0.1f;
+
+            // 待機 / 歩き / ダッシュの状態を判定してAnimatorへ送る
+            am.SetBool("isWalking", hasMoveInput && !isDashing);
+            am.SetBool("isDashing", hasMoveInput && isDashing);
+            am.SetBool("isGrounded", isGrounded);
+        }
+
+        if (moveInput.x > 0.1f)
+        {
+            // 右移動：反転しない
+            if (spriteRenderer != null) spriteRenderer.flipX = false;
+
+            // 攻撃コライダーの位置を右向きにする（X座標を正の値に設定）
+            if (attackCollider != null)
+            {
+                Vector3 pos = attackCollider.transform.localPosition;
+                attackCollider.transform.localPosition = new Vector3(-Mathf.Abs(pos.x), pos.y, pos.z);
+            }
+        }
+        else if (moveInput.x < -0.1f)
+        {
+            // 左移動：反転する
+            if (spriteRenderer != null) spriteRenderer.flipX = true;
+
+            // 攻撃コライダーの位置を左向きにする（X座標を負の値に設定）
+            if (attackCollider != null)
+            {
+                Vector3 pos = attackCollider.transform.localPosition;
+                attackCollider.transform.localPosition = new Vector3(Mathf.Abs(pos.x), pos.y, pos.z);
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (moveAction != null)
+        {
+            moveAction.performed += OnMove;
+            moveAction.canceled += OnMove;
+        }
+
+        if (jumpAction != null)
+        {
+            jumpAction.performed += OnJump;
+        }
+        dashAction.started += OnDashStart;
+        dashAction.canceled += OnDashEnd;
+
+        attackAction.performed += OnAttack;
+    }
+
+    private void OnDisable()
+    {
+        if (moveAction != null)
+        {
+            moveAction.performed -= OnMove;
+            moveAction.canceled -= OnMove;
+        }
+
+        if (jumpAction != null)
+        {
+            jumpAction.performed -= OnJump;
+        }
+        dashAction.started -= OnDashStart;
+        dashAction.canceled -= OnDashEnd;
+
+        attackAction.performed -= OnAttack;
+    }
+
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    private void OnJump(InputAction.CallbackContext context)
+    {
+        if (order == WitchOrder.Jump) return;
+
+        if (!isGrounded)
+            return;
+
+        rb.linearVelocity = new Vector2(
+            rb.linearVelocity.x,
+            jumpPower
+        );
+        SoundManager.Instance.PlayJumpSE();
+        isGrounded = false;
+
+        am.SetBool("isGrounded", false);
+        am.SetTrigger("isJumping");
+    }
+
+    private void OnDashStart(InputAction.CallbackContext context)
+    {
+        if (order == WitchOrder.Dash) return;
+        if (isGrounded == false) return;
+        isDashing = true;
+    }
+
+    private void OnDashEnd(InputAction.CallbackContext context)
+    {
+        if (order == WitchOrder.Dash) return;
+        isDashing = false;
+    }
+
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        if (order == WitchOrder.Attack) return;
+        if(isGrounded == false)return;
+        if (isAttacking) return;
+
+        if (attackCollider != null) attackCollider.enabled = true;
+        am.SetTrigger("isAttacking");
+        SoundManager.Instance.PlayAttackSE();
+        isAttacking = true;
+    }
+
+    public void EndAttack()
+    {
+        if (attackCollider != null) attackCollider.enabled = false;
+        isAttacking = false;
+    }
+
+    #endregion
+
+    #region 地面判定
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (rb != null && rb.linearVelocity.y > 0.1f) return;
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.y > 0.5f)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isGrounded = false;
+    }
+
+    #endregion
+
+    #region  シーン移動関数
+
+    /// <summary>
+    /// 現在のシーンを再読み込み
+    /// </summary>
+    public void Retry()
+    {
+        // ゲームオーバー時に止めた時間を元に戻す
+        Time.timeScale = 1f;
+
+        // DOTweenのアニメーションをクリア
+        DOTween.KillAll();
+
+        SoundManager.Instance.StopBGM();
+
+        // 現在のシーンを再読み込み
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    /// <summary>
+    /// タイトル画面へ遷移
+    /// </summary>
+    /// <param name="titleSceneName"></param>
+    public void GoToTitle()
+    {
+        // 止めた時間を元に戻す
+        Time.timeScale = 1f;
+
+        // DOTweenのアニメーションをクリア
+        DOTween.KillAll();
+
+        SoundManager.Instance.StopBGM();
+
+        // 指定したタイトルシーンを読み込む
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    #endregion
+
+   
+
+    #region 初期化処理
+
+    void Idle()
+    {
+        attackCollider.enabled = false;
+        isInterval = false;
+        HP = 3;
+    }
+
+    void ComponentIdle()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
+        am = GetComponent<Animator>();
+        attackCollider = GameObject.Find("攻撃判定用").GetComponentInChildren<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        cc = GameObject.Find("CutInManager").GetComponent<CutInController>();
+    }
+
+    void InputIdle()
+    {
+        moveAction = playerInput.actions["Move"];
+        attackAction = playerInput.actions["Attack"];
+        jumpAction = playerInput.actions["Jump"];
+        dashAction = playerInput.actions["Sprint"];
+    }
+
+    #endregion
+
+    #region Unityイベント
+
+    private void Awake()
+    {
+        ComponentIdle();
+        Idle();
+        InputIdle();
+        SoundManager.Instance.PlayBGM();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        HandleInvincibility();
+        Order();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.IsTouching(playerCollider))
+        {
+            CheckEnemyDamage(collision);
+        }
+    }
+
+    // 敵と重なり続けている間も毎フレーム判定を行う
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.IsTouching(playerCollider))
+        {
+            CheckEnemyDamage(collision);
+        }
+    }
+
+    /// <summary>
+    /// 敵との接触判定とダメージ処理
+    /// </summary>
+    private void CheckEnemyDamage(Collider2D collision)
+    {
+        // 接触したのが敵タグ、かつ無敵時間でなければダメージ処理
+        if (collision.CompareTag("Enemy") && !isInterval)
+        {
+            TakeDamage(1);
+        }
+
+        if (collision.CompareTag("Attack"))
+        {
+            cc.AttackOrder();
+            Destroy(collision);
+        }
+        if (collision.CompareTag("Jump"))
+        {
+            cc.JumpOrder();
+            Destroy(collision);
+        }
+        if (collision.CompareTag("Dash"))
+        {
+            cc.DashOrder();
+            Destroy(collision);
+        }
+
+        if (collision.CompareTag("Goal"))
+        {
+            ShowGameClear();
+        }
+
+        if (collision.CompareTag("T1"))
+        {
+            cc.T1Order();
+        }
+        if (collision.CompareTag("T2"))
+        {
+            cc.T2Order();
+
+        }
+        if (collision.CompareTag("TEnd"))
+        {
+            cc.TEndOrder();
+        }
+
+        if (collision.CompareTag("otasuke"))
+        {
+            cc.OtasukeOrder();
+        }
+
+    }
+
+    #endregion
+}
+                                            
+
+                                    </div>
+
+                                    <h3>CutInController .cs(UI演出)</h3>
+
+                                    <!-- スクロール可能なコードエリア -->
+                                    <div class="script-container">
+                                        <pre><code>
+
+using DG.Tweening;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.Windows;
+using static PlayerManager;
+
+public class CutInController : MonoBehaviour
+{
+    #region 宣言
+
+    [Header("参照")]
+    [SerializeField] Transform cutInMask;
+
+    [SerializeField] GameObject attack;
+    [SerializeField] RectTransform attackRectTransform;
+    [SerializeField] GameObject jump;
+    [SerializeField] RectTransform jumpRectTransform;
+    [SerializeField] GameObject dash;
+    [SerializeField] RectTransform dashRectTransform;
+    [SerializeField] GameObject t1;
+    [SerializeField] GameObject t2;
+    [SerializeField] GameObject tEnd;
+    [SerializeField] GameObject otasuke;
+    PlayerManager pm;
+    [SerializeField] Enemy_Ghost enemy;
+
+    // マスクの「開始時のローカル位置とスケール」を保存する変数
+    private Vector3 maskInitialLocalPos;
+    private Vector3 maskInitialScale;
+
+    private Vector2 attackInitialAnchoredPos;
+    private Vector2 jumpInitialAnchoredPos;
+    private Vector2 dashInitialAnchoredPos;
+
+    bool isAttack;
+    bool isJump;
+    bool isDash;
+
+    #endregion
+
+    #region カットイン
+
+    /// <summary>
+    /// カットイン演出
+    /// </summary>
+    public void CutIn()
+    {
+        var sequence = DOTween.Sequence();
+
+        Time.timeScale = 0f;
+        
+        sequence.Append(cutInMask.DOLocalMoveX(0f, 0.3f))
+            // カットインの表示時間
+            .AppendInterval(1.5f).SetUpdate(true)
+            // カットイン非表示
+            .Append(cutInMask.DOScaleY(0f, 0.2f)).SetUpdate(true)
+            // マスクを元の位置に戻す
+            .Append(cutInMask.DOLocalMove(maskInitialLocalPos, 0.2f)).SetUpdate(true)
+            .Append(cutInMask.DOScale(maskInitialScale, 0.2f)).SetUpdate(true)
+            // カットイン終了時呼び出す
+            .OnComplete(() =>
+            {
+                Time.timeScale = 1f;
+                CutInText();
+            });
+    }
+
+    public void AttackOrder()
+    {
+        isAttack = true;
+
+        if (attackRectTransform != null)
+        {
+            attackRectTransform.DOKill();
+            attackRectTransform.anchoredPosition = attackInitialAnchoredPos;
+        }
+
+        CutIn();
+        enemy.OnCutInFinished();
+        attack.SetActive(true);
+        jump.SetActive(false);
+        dash.SetActive(false);
+
+        pm.order = WitchOrder.Attack;
+    }
+
+    public void JumpOrder()
+    {
+        isJump = true;
+
+        if (jumpRectTransform != null)
+        {
+            jumpRectTransform.DOKill();
+            jumpRectTransform.anchoredPosition = jumpInitialAnchoredPos;
+        }
+
+        CutIn();
+        enemy.CheckDisappear();
+        attack.SetActive(false);
+        jump.SetActive(true);
+        dash.SetActive(false);
+
+        pm.order = WitchOrder.Jump;
+    }
+
+    public void DashOrder()
+    {
+        isDash = true;
+
+        if (dashRectTransform != null)
+        {
+            dashRectTransform.DOKill();
+            dashRectTransform.anchoredPosition = dashInitialAnchoredPos;
+        }
+
+        CutIn();
+        enemy.CheckDisappear();
+        attack.SetActive(false);
+        jump.SetActive(false);
+        dash.SetActive(true);
+
+        pm.order = WitchOrder.Dash;
+    }
+
+    public void T1Order()
+    {
+        t1.SetActive(true);
+    }
+
+    public void T2Order()
+    {
+        t1.SetActive(false);
+        t2.SetActive(true);
+    }
+
+    public void TEndOrder()
+    {
+        t1.SetActive(false);
+        t2.SetActive(false);
+    }
+
+    public void OtasukeOrder()
+    {
+        otasuke.SetActive(true);
+    }
+
+    void CutInText()
+    {
+        if (isAttack)
+        {
+            Vector2 targetPosition = new Vector2(641f, 376f); // この座標までテキストを移動
+
+            // 0.5秒かけて右上へ移動
+            attackRectTransform.DOAnchorPos(targetPosition, 1f)
+                .SetEase(Ease.OutCubic);
+            isAttack = false;
+        }
+        if (isJump)
+        {
+            Vector2 targetPosition = new Vector2(546.81f, 386f); // この座標までテキストを移動
+
+            // 0.5秒かけて右上へ移動
+            jumpRectTransform.DOAnchorPos(targetPosition, 1f)
+                .SetEase(Ease.OutCubic);
+            isJump = false;
+        }
+        if(isDash)
+        {
+            Vector2 targetPosition = new Vector2(546.81f, 386f); // この座標までテキストを移動
+
+            // 0.5秒かけて右上へ移動
+            dashRectTransform.DOAnchorPos(targetPosition, 1f)
+                .SetEase(Ease.OutCubic);
+            isDash = false;
+        }
+        
+    }
+
+    #endregion
+
+    #region 初期化
+
+    void Init()
+    {
+        pm = GameObject.Find("Player").GetComponent<PlayerManager>();
+        enemy = GameObject.Find("Enemy_Ghost").GetComponent<Enemy_Ghost>();
+
+        isAttack = false;
+        isJump = false;
+        isDash = false;
+
+        if (cutInMask != null)
+        {
+            maskInitialLocalPos = cutInMask.localPosition;
+            maskInitialScale = cutInMask.localScale;
+        }
+
+        if (attackRectTransform != null) attackInitialAnchoredPos = attackRectTransform.anchoredPosition;
+        if (jumpRectTransform != null) jumpInitialAnchoredPos = jumpRectTransform.anchoredPosition;
+        if (dashRectTransform != null) dashInitialAnchoredPos = dashRectTransform.anchoredPosition;
+    }
+
+    #endregion
+
+    #region Unityイベント
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Init();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Keyboard.current.enterKey.wasPressedThisFrame)
+        {
+            //CutIn();
+        }
+    }
+    #endregion
+}
+                                        
+
+                                    </div>
+
+                                </div>
+
+                                    </p>
+                            <div class="modal-button-wrap">
+                                <button class="modal-button" type="button">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
 
         </section>
 
